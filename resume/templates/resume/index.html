@@ -161,8 +161,7 @@
 			</div>		-->
 		</section><!--profileSection-->	
 		<section id="resumeSection">
-		   <div style="display:inline;height:48px;width:48px;background-color:red;">.</div>	
-			<div class="col-md-8 col-md-offset-2 stormy stormy-top-line">
+		   <div class="col-md-8 col-md-offset-2 stormy stormy-top-line">
 				<button id="btnResumeIcon" class="secondary resume" style="margin-left:-64px;" type="button">
 					<span class="glyphicon glyphicon-list double" style="min-width:36px;"></span>
 					<button id="btnResumeDark" class="nonprime intro intro-dark resume" style="padding-left:16px;padding-right:16px;vertical-align:middle;text-align:center;margin-top:-1px;padding-right:24px;">EMPLOYMENT</button>
@@ -176,6 +175,11 @@
 				<div id="divEmployment" class="info" style="margin-left:50px;display:none;margin-bottom:24px;padding-right:50px;margin-top:24px;">					
 					{% for employment in res.employmentinfo_set.all %}
 						<div class='EmpHeader'><span style='font-size:1.4em;'>{{employment.Employer}}</span><br/>
+						<span style='color:#000;'><strong>{{employment.Title}}</strong></span>​<br/></div><br/>
+						<p>{{employment.Summary}}<br/><br/>
+						{% for accomplishment in employment.accomplishment_set.all %}
+							&nbsp;&nbsp;&nbsp;● {{accomplishment.Description}}<br/>
+						{%endfor%}
 					{%endfor%}
 				</div>																							
 			</div>							
@@ -193,7 +197,13 @@
 					</button>
 				</div>
 				<div id="divSkills" class="info" style="margin-left:50px;display:none;margin-bottom:24px;padding-right:50px;margin-top:24px">					
-					{{res.Title}}
+					<div>
+						{% for skill in res.skill_set.all %}
+							{{skill.Description}}{% if not forloop.last %},&nbsp;{%endif%}
+						{%endfor%}
+						<!-- print ','.join(res.skill_set.all) -->
+					</div>
+					<br/>
 				</div>																			
 			</div>
 		</section> <!-- skillsSection -->

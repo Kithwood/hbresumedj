@@ -10,6 +10,7 @@ class Resume(models.Model):
     Phone = models.CharField(max_length=24)
     def __str__(self):
         return self.Name + "'s Resume"
+    
 
 
 class EmploymentInfo(models.Model):
