@@ -200,8 +200,7 @@
 					<div>
 						{% for skill in res.skill_set.all %}
 							{{skill.Description}}{% if not forloop.last %},&nbsp;{%endif%}
-						{%endfor%}
-						<!-- print ','.join(res.skill_set.all) -->
+						{%endfor%}						
 					</div>
 					<br/>
 				</div>																			
